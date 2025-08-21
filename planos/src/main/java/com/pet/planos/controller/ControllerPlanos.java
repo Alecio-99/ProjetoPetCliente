@@ -38,11 +38,7 @@ public class ControllerPlanos {
     ){
         return servicePlanos.relatorioAgendamento(inicio, fim, clienteId, tipoServico, raca);
     }
-    //Api para cadastro dos clientes que nossos clientes vão ter
-    @PostMapping("/cliente")
-    public EntityCliente cadastraCliente (@RequestBody ClienteDTO clienteDTO){
-        return servicePlanos.cadastraCliente(clienteDTO);
-    }
+
     //teste
     @GetMapping("/essencial")
     public ResponseEntity<String> acessarPlanoEssencial() {

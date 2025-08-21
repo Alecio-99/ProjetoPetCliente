@@ -1,5 +1,6 @@
 package com.pet.planos.entity;
 
+import com.pet.planos.DTO.ClienteDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,16 @@ public class EntityCliente {
     private String endereco;
     private String password;
 
+
+    public EntityCliente(ClienteDTO clienteDTO){
+        this.nome = clienteDTO.nome();
+        this.email = clienteDTO.email();
+        this.cpf = clienteDTO.cpf();
+        this.telefone = clienteDTO.telefone();
+        this.cep = clienteDTO.cep();
+        this.endereco = clienteDTO.endereco();
+        this.password = clienteDTO.password();
+    }
 
     public Long getId() {
         return id;
