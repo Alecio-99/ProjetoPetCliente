@@ -9,6 +9,7 @@ import com.pet.planos.interfase.PlanoHandler;
 import com.pet.planos.repository.ClienteRepository;
 import com.pet.planos.repository.EssencialRepository;
 import com.pet.planos.repository.RepositoryHistorico;
+import com.pet.planos.servicePlanos.validacaoAgendamento.ValidadorAgenda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,9 @@ public class ServicePlanos {
 
     @Autowired
     RepositoryHistorico repositoryHistorico;
+
+    @Autowired
+    List<ValidadorAgenda> validadorAgendaList;
 
 
     private final Map<String, PlanoHandler> handlerMap;
@@ -63,6 +67,10 @@ public class ServicePlanos {
         }
 
         List<EntityPlanoEssencial> agendamentos = new ArrayList<>();
+
+             for(EssencialDTO pet : multiplosAgendamentosDTO.pets()){
+                 validadorAgendaList.forEach(v -> v.validar(pet));
+             }
 
         for (EssencialDTO pet : multiplosAgendamentosDTO.pets()) {
             EntityPlanoEssencial agenda = new EntityPlanoEssencial();

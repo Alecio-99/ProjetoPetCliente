@@ -30,8 +30,6 @@ public class ControllerClientes {
 
          var uri = uriComponentsBuilder.path("/cliente/{id}").buildAndExpand(cliente.getId()).toUri();
          return ResponseEntity.created(uri).body(new DetalhesClienteDTO(cliente));
-
-
     }
 
 }
